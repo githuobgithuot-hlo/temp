@@ -7,5 +7,10 @@ cmds = [
   "/opt/venv/bin/pip install -r requirements.txt"
 ]
 
-# Start command removed - Railway will use Procfile automatically
+[phases.build]
+cmds = []
+
+[processes]
+web = "/opt/venv/bin/python -m uvicorn asgi:app --host 0.0.0.0 --port $PORT"
+worker = "/opt/venv/bin/python src/main.py"
 
